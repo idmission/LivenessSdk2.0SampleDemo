@@ -6,9 +6,8 @@ target 'LivenessSDK2Sample' do
   use_frameworks!
 
   # Pods for LivenessSDK2Sample
-    pod 'IDentityLivenessSDK2.0'
-    pod 'IDentityLivenessModels'
-    pod 'TensorFlowLiteSwift', '~> 2.7.0'
+    pod 'IDentityLivenessSDK2.0', :git => 'https://gitlab.idmission.com/apps/sdk2.0/ios/cocoapods/identitylivenesssdk2.0.git', :tag => '11.1.2.2.2'
+    pod 'IDentityLivenessModels', :git => 'https://gitlab.idmission.com/apps/sdk2.0/ios/cocoapods/identitylivenesssdk2.0.git', :tag => '11.1.2.2.2'
     pod 'GoogleMLKit/FaceDetection'
     pod 'GZIP'
 

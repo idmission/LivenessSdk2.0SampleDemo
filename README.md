@@ -918,7 +918,7 @@ For `autofill` you need to use below method of from a  `UIViewController`. If su
 ```swift
 // start autofill, presenting it from view controller(self)
 
-IDentitySDK.autofill(from: self) { result in
+IDentitySDK.autofill(from: self, captureIdSide: .front) { result in
     switch result {
         case .success(let autofillResult):
 
@@ -1139,16 +1139,16 @@ IDCapture.strings.notInFocus = "Not in focus"
 IDCapture.strings.documentDetectedHoldStill = "Document detected, hold still..."
 IDCapture.strings.glareDetected = "Move Away From Direct Light"
 IDCapture.strings.removeFinger = "Remove Finger"
-IDCapture.colors.closeButtonTextColor = .black
+IDCapture.colors.backgroundColor = .clear
 IDCapture.colors.closeButtonColor = .white
+IDCapture.colors.closeButtonTextColor = .black
 IDCapture.colors.closeButtonImageTintColor = .white
-IDCapture.colors.successLabelBackgroundColor = .green
-IDCapture.colors.errorLabelBackgroundColor = .red
-IDCapture.colors.successLabelTextColor = .white
 IDCapture.colors.captureLabelColor = .white
 IDCapture.colors.captureLabelTextColor = .clear
+IDCapture.colors.successLabelBackgroundColor = .green
+IDCapture.colors.successLabelTextColor = .white
+IDCapture.colors.errorLabelBackgroundColor = .red
 IDCapture.colors.errorLabelTextColor = .white
-IDCapture.colors.backgroundColor = .clear
 IDCapture.fonts.closeButtonTextFont = UIFont.systemFont(ofSize: 20)
 IDCapture.fonts.captureLabelFont = UIFont.boldSystemFont(ofSize: 14)
 IDCapture.fonts.labelFont = UIFont.systemFont(ofSize: 14)
@@ -1163,16 +1163,18 @@ IDCapture.images.bottomInfoImage = UIImage(named: "IdiInfo")
 IDCapture.strings.instructionScreenText = "Lorem ipsum text"
 IDCapture.strings.instructionScreenButtonText = "Continue"
 IDCapture.colors.instructionScreenBackgroundColor = .white
-IDCapture.colors.instructionScreenTextBackgroundColor = .gray
+IDCapture.colors.instructionScreenBackButtonColor = .orange
 IDCapture.colors.instructionScreenBackButtonImageTintColor = .orange
-IDCapture.colors.instructionScreenImageTintColor = .white
+IDCapture.colors.instructionScreenTextBackgroundColor = .gray
 IDCapture.colors.instructionScreenLabelTextColor = .black
-IDCapture.colors.instructionScreenButtonTextColor = .white
+IDCapture.colors.instructionScreenImageTintColor = .white
 IDCapture.colors.instructionScreenButtonBackgroundColor = .gray
+IDCapture.colors.instructionScreenButtonTextColor = .white
 IDCapture.fonts.instructionScreenLabelFont = UIFont.systemFont(ofSize: 20)
 IDCapture.fonts.instructionScreenButtonFont = UIFont.systemFont(ofSize: 20)
 IDCapture.images.instructionScreenImage = UIImage(named: "IDCaptureImage")
 IDCapture.images.instructionBackButtonImage = UIImage(named: "IDCaptureImage")
+IDCapture.style.instructionScreenContinueButton = .style(borderWidth: 2, borderColor: .red, cornerRadius: 25, clipsToBounds: true)
 
 //IDCapture Retry Screen UI Customization
 IDCapture.strings.retryScreenText = "RealID not Detected. Please try again"
@@ -1181,11 +1183,16 @@ IDCapture.strings.cancelButtonText = "Cancel"
 IDCapture.colors.retryScreenBackgroundColor = .white
 IDCapture.colors.retryScreenLabelTextColor = .black
 IDCapture.colors.retryScreenImageTintColor = .green
-IDCapture.colors.retryScreenButtonTextColor = .green
-IDCapture.colors.retryScreenButtonBackgroundColor = .clear
+IDCapture.colors.retryScreenRetryButtonBackgroundColor = .white
+IDCapture.colors.retryScreenRetryButtonTextColor = .black
+IDCapture.colors.retryScreenCancelButtonBackgroundColor = .white
+IDCapture.colors.retryScreenCancelButtonTextColor = .black
 IDCapture.fonts.retryScreenLabelFont = UIFont.systemFont(ofSize: 16)
-IDCapture.fonts.retryScreenButtonFont = UIFont.systemFont(ofSize: 14)
+IDCapture.fonts.retryScreenRetryButtonFont = UIFont.systemFont(ofSize: 14)
+IDCapture.fonts.retryScreenCancelButtonFont = UIFont.systemFont(ofSize: 14)
 IDCapture.images.retryScreenImage = UIImage(named: "IdRetryImage")
+IDCapture.style.retryScreenRetryButton = .style(borderWidth: 2, borderColor: .red, cornerRadius: 10, clipsToBounds: true)
+IDCapture.style.retryScreenCancelButton = .style(borderWidth: 2, borderColor: .red, cornerRadius: 10, clipsToBounds: true)
 
 ```
 
@@ -1202,7 +1209,7 @@ SelfieCapture.options.maxRelativeNoseHeight = 0.67
 SelfieCapture.options.labelsConfidenceThreshold = 0.79
 SelfieCapture.options.faceMaskProbabilityThreshold = 0.98
 SelfieCapture.options.liveFaceProbabilityThreshold = 0.9
-SelfieCapture.options.consecutiveFakeFaceLimit = 15
+SelfieCapture.options.consecutiveFakeFaceLimit = 10
 SelfieCapture.options.lightIntensityThreshold = 0.05
 SelfieCapture.options.focusThreshold = 0.2
 SelfieCapture.options.isDebugMode = true
@@ -1236,13 +1243,16 @@ SelfieCapture.strings.capturingFace = "Capturing Face"
 SelfieCapture.strings.tooMuchLight = "Too much light around face"
 SelfieCapture.colors.backgroundColor = .white
 SelfieCapture.colors.overlayTopViewColor = .white
-SelfieCapture.colors.closeButtonTextColor = .black
 SelfieCapture.colors.closeButtonColor = .clear
+SelfieCapture.colors.closeButtonTextColor = .black
 SelfieCapture.colors.closeButtonImageTintColor = .white
+SelfieCapture.colors.captureLabelColor = .white
+SelfieCapture.colors.captureLabelTextColor = .clear
 SelfieCapture.colors.successLabelBackgroundColor = .green
 SelfieCapture.colors.errorLabelBackgroundColor = .red
 SelfieCapture.colors.successLabelTextColor = .white
 SelfieCapture.colors.errorLabelTextColor = .white
+SelfieCapture.fonts.captureLabelFont = UIFont.systemFont(ofSize: 20)
 SelfieCapture.fonts.labelFont = UIFont.systemFont(ofSize: 20)
 SelfieCapture.fonts.closeButtonTextFont = UIFont.systemFont(ofSize: 20)
 SelfieCapture.layout.labelPosition = .top
@@ -1254,16 +1264,18 @@ SelfieCapture.images.bottomInfoImage = UIImage(named: "Selfieinfo")
 SelfieCapture.strings.instructionScreenText = "Lorem ipsum text"
 SelfieCapture.strings.instructionScreenButtonText = "Continue"
 SelfieCapture.colors.instructionScreenBackgroundColor = .white
-SelfieCapture.colors.instructionScreenTextBackgroundColor = .orange
+SelfieCapture.colors.instructionScreenBackButtonColor = .clear
 SelfieCapture.colors.instructionScreenBackButtonImageTintColor = .gray
-SelfieCapture.colors.instructionScreenImageTintColor = .white
+SelfieCapture.colors.instructionScreenTextBackgroundColor = .orange
 SelfieCapture.colors.instructionScreenLabelTextColor = .black
-SelfieCapture.colors.instructionScreenButtonTextColor = .white
+SelfieCapture.colors.instructionScreenImageTintColor = .white
 SelfieCapture.colors.instructionScreenButtonBackgroundColor = .gray
+SelfieCapture.colors.instructionScreenButtonTextColor = .white
 SelfieCapture.fonts.instructionScreenLabelFont = UIFont.systemFont(ofSize: 20)
 SelfieCapture.fonts.instructionScreenButtonFont = UIFont.systemFont(ofSize: 20)
 SelfieCapture.images.instructionScreenImage = UIImage(named: "SelfieCaptureImage")
 SelfieCapture.images.instructionBackButtonImage = UIImage(named: "BackButtonImage")
+SelfieCapture.style.instructionScreenContinueButton = .style(borderWidth: 2, borderColor: .red, cornerRadius: 25, clipsToBounds: true)
 
 //SelfieCapture Retry Screen UI Customization
 SelfieCapture.strings.retryScreenText = "Live face not Detected. Please try again"
@@ -1272,11 +1284,16 @@ SelfieCapture.strings.cancelButtonText = "Cancel"
 SelfieCapture.colors.retryScreenBackgroundColor = .white
 SelfieCapture.colors.retryScreenLabelTextColor = .black
 SelfieCapture.colors.retryScreenImageTintColor = .blue
-SelfieCapture.colors.retryScreenButtonTextColor = .blue
-SelfieCapture.colors.retryScreenButtonBackgroundColor = .clear
+SelfieCapture.colors.retryScreenRetryButtonBackgroundColor = .white
+SelfieCapture.colors.retryScreenRetryButtonTextColor = .black
+SelfieCapture.colors.retryScreenCancelButtonBackgroundColor = .white
+SelfieCapture.colors.retryScreenCancelButtonTextColor = .black
 SelfieCapture.fonts.retryScreenLabelFont = UIFont.systemFont(ofSize: 20)
-SelfieCapture.fonts.retryScreenButtonFont = UIFont.systemFont(ofSize: 20)
+SelfieCapture.fonts.retryScreenRetryButtonFont = UIFont.systemFont(ofSize: 14)
+SelfieCapture.fonts.retryScreenCancelButtonFont = UIFont.systemFont(ofSize: 14)
 SelfieCapture.images.retryScreenImage = UIImage(named: "SelfieRetryImage")
+SelfieCapture.style.retryScreenRetryButton = .style(borderWidth: 2, borderColor: .red, cornerRadius: 10, clipsToBounds: true)
+SelfieCapture.style.retryScreenCancelButton = .style(borderWidth: 2, borderColor: .red, cornerRadius: 10, clipsToBounds: true)
 
 ```
 
@@ -1325,15 +1342,18 @@ DocumentCapture.images.bottomInfoImage = UIImage(named: "IdiInfo")
 DocumentCapture.strings.instructionScreenText = "Lorem ipsum text"
 DocumentCapture.strings.instructionScreenButtonText = "Continue"
 DocumentCapture.colors.instructionScreenBackgroundColor = .blue
+DocumentCapture.colors.instructionScreenBackButtonColor = .clear
 DocumentCapture.colors.instructionScreenBackButtonImageTintColor = .orange
-DocumentCapture.colors.instructionScreenImageTintColor = .white
+DocumentCapture.colors.instructionScreenTextBackgroundColor = .orange
 DocumentCapture.colors.instructionScreenLabelTextColor = .red
-DocumentCapture.colors.instructionScreenButtonTextColor = .green
+DocumentCapture.colors.instructionScreenImageTintColor = .white
 DocumentCapture.colors.instructionScreenButtonBackgroundColor = .yellow
+DocumentCapture.colors.instructionScreenButtonTextColor = .green
 DocumentCapture.fonts.instructionScreenLabelFont = UIFont.systemFont(ofSize: 20)
 DocumentCapture.fonts.instructionScreenButtonFont = UIFont.systemFont(ofSize: 20)
 DocumentCapture.images.instructionScreenImage = UIImage(named: "DocCaptureImage")
 DocumentCapture.images.instructionBackButtonImage = UIImage(named: "BackImage")
+DocumentCapture.style.instructionScreenContinueButton = .style(borderWidth: 2, borderColor: .red, cornerRadius: 25, clipsToBounds: true)
 
 //DocumentCapture Retry Screen UI Customization
 DocumentCapture.strings.retryScreenText = "RealID not Detected. Please try again"
@@ -1342,11 +1362,16 @@ DocumentCapture.strings.cancelButtonText = "Cancel"
 DocumentCapture.colors.retryScreenBackgroundColor = .white
 DocumentCapture.colors.retryScreenLabelTextColor = .black
 DocumentCapture.colors.retryScreenImageTintColor = .green
-DocumentCapture.colors.retryScreenButtonTextColor = .green
-DocumentCapture.colors.retryScreenButtonBackgroundColor = .clear
+DocumentCapture.colors.retryScreenRetryButtonBackgroundColor = .white
+DocumentCapture.colors.retryScreenRetryButtonTextColor = .black
+DocumentCapture.colors.retryScreenCancelButtonBackgroundColor = .white
+DocumentCapture.colors.retryScreenCancelButtonTextColor = .black
 DocumentCapture.fonts.retryScreenLabelFont = UIFont.systemFont(ofSize: 16)
-DocumentCapture.fonts.retryScreenButtonFont = UIFont.systemFont(ofSize: 14)
+DocumentCapture.fonts.retryScreenRetryButtonFont = UIFont.systemFont(ofSize: 14)
+DocumentCapture.fonts.retryScreenCancelButtonFont = UIFont.systemFont(ofSize: 14)
 DocumentCapture.images.retryScreenImage = UIImage(named: "IdRetryImage")
+DocumentCapture.style.retryScreenRetryButton = .style(borderWidth: 2, borderColor: .red, cornerRadius: 10, clipsToBounds: true)
+DocumentCapture.style.retryScreenCancelButton = .style(borderWidth: 2, borderColor: .red, cornerRadius: 10, clipsToBounds: true)
 
 ```
 
@@ -1354,6 +1379,7 @@ DocumentCapture.images.retryScreenImage = UIImage(named: "IdRetryImage")
 
 ```swift
 //SignatureCapture Customization
+SignatureCapture.options.isEnableDigitalSignature = true
 SignatureCapture.options.signatureStrokeWidth = 2
 
 //SignatureCapture Screen UI Customization
@@ -1373,6 +1399,9 @@ SignatureCapture.colors.doneButtonTextColor = .white
 SignatureCapture.fonts.titleLabelTextFont = UIFont.systemFont(ofSize: 18)
 SignatureCapture.fonts.clearButtonTextFont = UIFont.systemFont(ofSize: 14)
 SignatureCapture.fonts.doneButtonTextFont = UIFont.systemFont(ofSize: 14)
+SignatureCapture.images.closeButtonImage = UIImage(named: "BackImage")
+SignatureCapture.style.clearButton = .style(borderWidth: 2, borderColor: .red, cornerRadius: 25, clipsToBounds: true)
+SignatureCapture.style.doneButton = .style(borderWidth: 2, borderColor: .red, cornerRadius: 25, clipsToBounds: true)
 
 ```
 
@@ -1491,6 +1520,21 @@ VideoCapture.colors.readingTextBackgroundColor = .white
 ```
 
 ## SDK Version History
+
+### **v 11.1.1.2.2 (15 January 2026)**
+- implemented server-side response for Autofill Service.
+- UI Enhancements.
+
+### **v 10.1.24.2.3 (04 December 2025)**
+- Added event logging capability within the SDK
+- Implemented improved handling for token expiration scenarios
+- Updated SDK to ensure compatibility with iOS 26 and Xcode 26
+- Added support for standalone signature capture with Improved UI
+- Integrated the Biometric signature library into the SDK.
+- Enabled more efficient multi-document workflows in custom product
+
+### **v 10.1.18.2.1 (11 November 2025)**
+- Updated the default maximum allowed fake face capture count from 15 to 10.
 
 ### **v 10.1.16.2.2 (25 August 2025)**
 - Updated new encryption and decryption logic.

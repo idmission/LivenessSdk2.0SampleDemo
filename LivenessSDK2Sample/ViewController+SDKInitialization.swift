@@ -139,10 +139,10 @@ extension ViewController {
         SelfieCapture.colors.retryScreenBackgroundColor = .white
         SelfieCapture.colors.retryScreenLabelTextColor = .black
         SelfieCapture.colors.retryScreenImageTintColor = .blue
-        SelfieCapture.colors.retryScreenButtonTextColor = .blue
-        SelfieCapture.colors.retryScreenButtonBackgroundColor = .clear
+        SelfieCapture.colors.retryScreenRetryButtonTextColor = .blue
+        SelfieCapture.colors.retryScreenRetryButtonBackgroundColor = .clear
         SelfieCapture.fonts.retryScreenLabelFont = UIFont.systemFont(ofSize: 16)
-        SelfieCapture.fonts.retryScreenButtonFont = UIFont.systemFont(ofSize: 14)
+        SelfieCapture.fonts.retryScreenRetryButtonFont = UIFont.systemFont(ofSize: 14)
         
     }
 }
